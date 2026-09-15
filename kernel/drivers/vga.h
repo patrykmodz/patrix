@@ -10,3 +10,8 @@ void vga_write_string(const char* string);
 void vga_scroll();
 //clear the entire screen.
 void vga_clear();
+
+//hardware-cursor
+void vga_update_cursor();
+void vga_hide_cursor();
+void vga_show_cursor();
