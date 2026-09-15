@@ -3,5 +3,5 @@
 
 void boot_init() {
     vga_init();
-    vga_write_char('a');
+    vga_write_string("lorem ipsum dolor sit amet");
 }
