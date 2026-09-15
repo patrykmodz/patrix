@@ -133,3 +133,22 @@ void vga_show_cursor() {
     //set the ending scanline.
     outb(0x3D5, 0x0F);
 }
+
+//verify that vga text memory can be accessed.
+bool vga_verify() {
+
+    //store the original value of the first screen cell.
+    unsigned short original = vga_memory[0];
+
+    //write a known value to the first screen cell.
+    vga_memory[0] = ((unsigned short)0x07 << 8) | 'T';
+
+    //check whether the value was written correctly.
+    bool valid = vga_memory[0] == (((unsigned short)0x07 << 8) | 'T');
+
+    //restore the original screen cell.
+    vga_memory[0] = original;
+
+    //return whether the vga memory test succeeded.
+    return valid;
+}
