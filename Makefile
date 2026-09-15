@@ -14,6 +14,8 @@ build:
 build/boot.o: kernel/arch/x86/boot.s | build
 	$(CXX) -m32 -c kernel/arch/x86/boot.s -o build/boot.o
 
+build/io.o: kernel/arch/x86/io.cpp | build
+	$(CXX) $(CXXFLAGS) -c kernel/arch/x86/io.cpp -o build/io.o
 
 # kernel
 build/kernel.o: kernel/main.cpp | build
@@ -34,6 +36,7 @@ OBJS = \
 	build/kernel.o \
 	build/boot_init.o \
 	build/vga.o \
+	build/io.o \
 
 build/patrix.bin: $(OBJS)
 	ld -m elf_i386 -T linker.ld -o build/patrix.bin $(OBJS)
