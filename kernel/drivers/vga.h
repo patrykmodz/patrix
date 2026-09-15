@@ -8,3 +8,5 @@ void vga_write_char(char character);
 void vga_write_string(const char* string);
 //move all screen lines up by one line.
 void vga_scroll();
+//clear the entire screen.
+void vga_clear();
