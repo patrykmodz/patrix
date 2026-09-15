@@ -1,6 +1,6 @@
 patrix - kernel made in c++.
 
-version 0.08
+version 0.09
 
 ============
 
@@ -21,3 +21,11 @@ v0.06 - right-edge handling
 v0.07 - vga screen clearing
 
 v0.08 - vga cursor control
+
+v0.09 - gdt:
+    - added gdt interface
+    - added gdt implementation
+    - added gdt flush assembly
+    - loaded the gdt during kernel boot
+    - reloaded kernel segment registers
+    - verified that execution continues after gdt initialization
