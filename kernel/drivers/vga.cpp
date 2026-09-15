@@ -55,6 +55,17 @@ void vga_write_char(char character) {
     vga_memory[index] = ((unsigned short)0x07 << 8) | character;
     //move the cursor one character to the right.
     vga_x++;
+
+    //move to the beginning of the next line when the cursor reaches the right edge.
+    if (vga_x >= 80) {
+        vga_x = 0;
+        vga_y++;
+    }
+
+    //scroll the screen when the cursor moves below the last row.
+    if (vga_y >= 25) {
+        vga_scroll();
+    }
 }
 
 //write each character in the string to the screen.
