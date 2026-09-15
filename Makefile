@@ -17,6 +17,13 @@ build/boot.o: kernel/arch/x86/boot.s | build
 build/io.o: kernel/arch/x86/io.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/arch/x86/io.cpp -o build/io.o
 
+#gdt
+build/gdt.o: kernel/arch/x86/gdt.cpp | build
+	$(CXX) $(CXXFLAGS) -c kernel/arch/x86/gdt.cpp -o build/gdt.o
+
+build/gdt_flush.o: kernel/arch/x86/gdt_flush.s | build
+	$(CXX) -m32 -c kernel/arch/x86/gdt_flush.s -o build/gdt_flush.o
+
 # kernel
 build/kernel.o: kernel/main.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/main.cpp -o build/kernel.o
@@ -37,6 +44,9 @@ OBJS = \
 	build/boot_init.o \
 	build/vga.o \
 	build/io.o \
+	build/gdt.o \
+	build/gdt_flush.o \
+
 
 build/patrix.bin: $(OBJS)
 	ld -m elf_i386 -T linker.ld -o build/patrix.bin $(OBJS)
