@@ -1,6 +1,6 @@
 patrix - kernel made in c++.
 
-version 0.06
+version 0.07
 
 
 
@@ -17,3 +17,5 @@ v0.04 - newline handling
 v0.05 - screen scrolling
 
 v0.06 - right-edge handling
+
+v0.07 - vga screen clearing
