@@ -31,6 +31,10 @@ build/kernel.o: kernel/main.cpp | build
 build/boot_init.o: kernel/boot_init.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/boot_init.cpp -o build/boot_init.o
 
+build/boot_status.o: kernel/boot_status.cpp | build
+	$(CXX) $(CXXFLAGS) -c kernel/boot_status.cpp -o build/boot_status.o
+
+
 #drivers
 build/vga.o: kernel/drivers/vga.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/drivers/vga.cpp -o build/vga.o
@@ -46,6 +50,7 @@ OBJS = \
 	build/io.o \
 	build/gdt.o \
 	build/gdt_flush.o \
+	build/boot_status.o \
 
 
 build/patrix.bin: $(OBJS)
