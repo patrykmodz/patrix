@@ -1,15 +1,13 @@
 patrix - kernel made in c++.
 
-version 0.09
+version 0.10
 
 ============
 
 UPDATE LOG:
 
-v0.09 - gdt<br>
-- added gdt interface<br>
-- added gdt implementation<br>
-- added gdt flush assembly<br>
-- loaded the gdt during kernel boot<br>
-- reloaded kernel segment registers<br>
-- verified that execution continues after gdt initialization
+v0.10 - boot initialization<br>
+- updated boot_init to check if system initialized<br>
+- added boot_status to display the result of system initialization<br>
+- added vga_verify to verify that the vga driver was initialized correctly at boot<br>
+- added gdt_verify to verify that the gdt was loaded correctly at boot
