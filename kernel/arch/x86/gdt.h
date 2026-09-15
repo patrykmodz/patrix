@@ -1,5 +1,8 @@
 #pragma once
 
+//verify that the global descriptor table was loaded correctly.
+bool gdt_verify();
+
 //describe one entry in the global descriptor table.
 struct __attribute__((packed)) GDTEntry {
     unsigned short limit_low;

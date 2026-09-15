@@ -59,3 +59,20 @@ granularity = 0xCF
     //load the gdt and activate its segment descriptors.
     gdt_flush((unsigned int)&gdt_pointer);
 }
+
+//verify that the global descriptor table was loaded correctly.
+bool gdt_verify() {
+
+    //store the currently loaded gdt pointer.
+    GDTPointer loaded_pointer;
+
+    //read the gdt pointer currently loaded into the cpu.
+    asm volatile (
+        "sgdt %0"
+        : "=m"(loaded_pointer)
+    );
+
+    //check that the loaded gdt matches the gdt created by patrix.
+    return loaded_pointer.base == (unsigned int)&gdt
+        && loaded_pointer.limit == sizeof(gdt) - 1;
+}
