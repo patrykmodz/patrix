@@ -1,4 +1,5 @@
 #include "kernel/drivers/vga.h"
+#include "kernel/arch/x86/io.h"
 
 //pointer to the beginning of vga text memory.
 volatile unsigned short* vga_memory;
@@ -92,4 +93,43 @@ void vga_clear() {
     //reset the cursor to the top-left corner.
     vga_x = 0;
     vga_y = 0;
+}
+
+/*
+CURSOR
+*/
+
+//update the hardware cursor to match the software cursor.
+void vga_update_cursor() {
+    //calculate the cursor position from its x and y coordinates.
+    unsigned short position = vga_y * 80 + vga_x;
+
+    //select the cursor position high byte register.
+    outb(0x3D4, 0x0E);
+    //write the high byte of the cursor position.
+    outb(0x3D5, (position >> 8) & 0xFF);
+    //select the cursor position low byte register.
+    outb(0x3D4, 0x0F);
+    //write the low byte of the cursor position.
+    outb(0x3D5, position & 0xFF);
+}
+
+//hide the hardware cursor.
+void vga_hide_cursor() {
+    //select the cursor start register.
+    outb(0x3D4, 0x0A);
+    //disable the cursor.
+    outb(0x3D5, 0x20);
+}
+
+//show the hardware cursor.
+void vga_show_cursor() {
+    //select the cursor start register.
+    outb(0x3D4, 0x0A);
+    //enable the cursor and set its starting scanline.
+    outb(0x3D5, 0x0E);
+    //select the cursor end register.
+    outb(0x3D4, 0x0B);
+    //set the ending scanline.
+    outb(0x3D5, 0x0F);
 }
