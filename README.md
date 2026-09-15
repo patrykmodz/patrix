@@ -1,3 +1,3 @@
 patrix - kernel made in c++.
 
-version 0.01
+version 0.02
