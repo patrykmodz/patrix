@@ -19,6 +19,13 @@ void vga_init() {
 
 
 void vga_write_char(char character) {
+    //move to the beginning of the next line when a newline is received.
+    if (character == '\n') {
+        vga_x = 0;
+        vga_y++;
+        return;
+    }
+
     //convert the two-dimensional cursor position into a one-dimensional array index.
     int index = vga_y * 80 + vga_x;
     //combine the text colour and character into one 16-bit vga entry.
@@ -26,7 +33,6 @@ void vga_write_char(char character) {
     //move the cursor one character to the right.
     vga_x++;
 }
-
 
 //write each character in the string to the screen.
 void vga_write_string(const char* string) {
