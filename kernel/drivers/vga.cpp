@@ -17,12 +17,35 @@ void vga_init() {
     vga_y = 0;
 }
 
+//move all screen lines up by one line.
+void vga_scroll() {
+    //copy every row into the row above it.
+    for (int y = 1; y < 25; y++) {
+        for (int x = 0; x < 80; x++) {
+            vga_memory[(y - 1) * 80 + x] = vga_memory[y * 80 + x];
+        }
+    }
+
+    //clear the new bottom row.
+    for (int x = 0; x < 80; x++) {
+        vga_memory[24 * 80 + x] = ((unsigned short)0x07 << 8) | ' ';
+    }
+
+    //keep the cursor on the bottom row.
+    vga_y = 24;
+}
 
 void vga_write_char(char character) {
     //move to the beginning of the next line when a newline is received.
     if (character == '\n') {
         vga_x = 0;
         vga_y++;
+
+        //scroll the screen when the cursor moves below the last row.
+        if (vga_y >= 25) {
+            vga_scroll();
+        }
+
         return;
     }
 
