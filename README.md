@@ -22,10 +22,10 @@ v0.07 - vga screen clearing
 
 v0.08 - vga cursor control
 
-v0.09 - gdt:
-    - added gdt interface
-    - added gdt implementation
-    - added gdt flush assembly
-    - loaded the gdt during kernel boot
-    - reloaded kernel segment registers
-    - verified that execution continues after gdt initialization
+v0.09 - gdt<br>
+- added gdt interface<br>
+- added gdt implementation<br>
+- added gdt flush assembly<br>
+- loaded the gdt during kernel boot<br>
+- reloaded kernel segment registers<br>
+- verified that execution continues after gdt initialization
