@@ -78,3 +78,18 @@ void vga_write_string(const char* string) {
         string++;
     }
 }
+
+//clear the entire screen.
+void vga_clear() {
+
+    //go through every character cell on the screen.
+    for (int i = 0; i < 80 * 25; i++) {
+
+        //replace the character with a blank space.
+        vga_memory[i] = ((unsigned short)0x07 << 8) | ' ';
+    }
+
+    //reset the cursor to the top-left corner.
+    vga_x = 0;
+    vga_y = 0;
+}
