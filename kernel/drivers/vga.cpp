@@ -26,3 +26,15 @@ void vga_write_char(char character) {
     //move the cursor one character to the right.
     vga_x++;
 }
+
+
+//write each character in the string to the screen.
+void vga_write_string(const char* string) {
+    //continue until the null terminator is reached.
+    while (*string != '\0') {
+        //write the current character to the screen.
+        vga_write_char(*string);
+        //move to the next character in the string.
+        string++;
+    }
+}
