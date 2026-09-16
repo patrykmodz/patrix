@@ -25,9 +25,6 @@ void idt_init() {
         idt[i].flags = 0;
         idt[i].base_high = 0;
     }
-
-    //initialize the test interrupt.
-    idt_test_init();
     //load the idt into the cpu.
     idt_flush((unsigned int)&idt_pointer);
 }
@@ -63,19 +60,6 @@ void idt_set_entry(
 }
 
 
-//initialize the first interrupt vector.
-void idt_test_init() {
-
-    //set idt vector 0 to the interrupt stub.
-    idt_set_entry(
-        0,
-        (unsigned int)interrupt_stub_0,
-        0x08,
-        0x8E
-    );
-}
-
-
 //verify that the interrupt descriptor table was loaded correctly.
 bool idt_verify() {
 
@@ -92,9 +76,3 @@ bool idt_verify() {
     return loaded_pointer.base == (unsigned int)&idt
         && loaded_pointer.limit == sizeof(idt) - 1;
 }
-
-
-// //display a message when the test interrupt is triggered.
-// extern "C" void idt_test_message() {
-//     vga_write_string("[ OK ] idt test interrupt\n");
-// }

@@ -38,20 +38,11 @@ struct InterruptFrame {
 //initialize the interrupt descriptor table.
 void idt_init();
 
-//handle interrupt vector 0 in assembly.
-extern "C" void interrupt_stub_0();
-
 //verify that the interrupt descriptor table was loaded correctly.
 bool idt_verify();
 
 //load the interrupt descriptor table.
 extern "C" void idt_flush(unsigned int pointer);
-
-//initialize the first interrupt vector.
-void idt_test_init();
-
-//handle the test interrupt.
-extern "C" void idt_test_handler();
 
 //handle interrupts after the assembly stub has saved the processor state.
 extern "C" void interrupt_handler(InterruptFrame* frame);
