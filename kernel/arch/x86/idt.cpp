@@ -1,5 +1,6 @@
 #include "kernel/arch/x86/idt.h"
 #include "kernel/drivers/vga.h"
+#include "kernel/kernel_panic.h"
 
 
 //store the interrupt descriptor table entries.
@@ -36,8 +37,8 @@ void idt_init() {
 extern "C" void interrupt_handler(InterruptFrame* frame) {
     //handle a divide error.
     if (frame->interrupt_number == 0) {
-        //display the divide error message.
-        vga_write_string("[ EXCEPTION ] divide error\n");
+        //halt the kernel after a divide error.
+        kernel_panic("divide error");
     }
 }
 
