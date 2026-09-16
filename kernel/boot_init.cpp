@@ -1,21 +1,24 @@
 #include "kernel/boot_init.h"
 #include "kernel/drivers/vga.h"
-#include "kernel/arch/x86/io.h"
 #include "kernel/arch/x86/gdt.h"
 #include "kernel/boot_status.h"
 
+
 void boot_init() {
+const char* vga_description = "vga initialization";
+const char* gdt_description = "gdt initialization";
+
+
     //initialize the vga driver.
     vga_init();
-
     //hide the hardware cursor during boot.
     vga_hide_cursor();
 
     //verify that vga text memory is accessible.
     if (vga_verify()) {
-        boot_status(BootStatus::OK, "vga initialized");
+        boot_status(BootStatus::OK, vga_description);
     } else {
-        boot_status(BootStatus::FAILED, "vga initialization failed");
+        boot_status(BootStatus::FAILED, vga_description);
         return;
     }
 
@@ -24,9 +27,9 @@ void boot_init() {
 
     //verify that the gdt was loaded correctly.
     if (gdt_verify()) {
-        boot_status(BootStatus::OK, "gdt initialized");
+        boot_status(BootStatus::OK, gdt_description);
     } else {
-        boot_status(BootStatus::FAILED, "gdt initialization failed");
+        boot_status(BootStatus::FAILED, gdt_description);
         return;
     }
 }
