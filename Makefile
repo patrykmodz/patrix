@@ -28,8 +28,8 @@ build/gdt_flush.o: kernel/arch/x86/gdt_flush.s | build
 build/idt.o: kernel/arch/x86/idt.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/arch/x86/idt.cpp -o build/idt.o
 
-build/idt_test.o: kernel/arch/x86/idt_test.s | build
-	$(CXX) -m32 -c kernel/arch/x86/idt_test.s -o build/idt_test.o
+build/interrupt_stub.o: kernel/arch/x86/interrupt_stub.s | build
+	$(CXX) -m32 -c kernel/arch/x86/interrupt_stub.s -o build/interrupt_stub.o
 
 build/idt_flush.o: kernel/arch/x86/idt_flush.s | build
 	$(CXX) -m32 -c kernel/arch/x86/idt_flush.s -o build/idt_flush.o
@@ -61,7 +61,7 @@ OBJS = \
 	build/gdt.o \
 	build/gdt_flush.o \
 	build/boot_status.o \
-	build/idt_test.o \
+	build/interrupt_stub.o \
 	build/idt.o \
 	build/idt_flush.o \
 
