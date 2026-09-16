@@ -31,6 +31,9 @@ build/idt.o: kernel/arch/x86/idt.cpp | build
 build/idt_test.o: kernel/arch/x86/idt_test.s | build
 	$(CXX) -m32 -c kernel/arch/x86/idt_test.s -o build/idt_test.o
 
+build/idt_flush.o: kernel/arch/x86/idt_flush.s | build
+	$(CXX) -m32 -c kernel/arch/x86/idt_flush.s -o build/idt_flush.o
+
 # kernel
 build/kernel.o: kernel/main.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/main.cpp -o build/kernel.o
@@ -60,6 +63,7 @@ OBJS = \
 	build/boot_status.o \
 	build/idt_test.o \
 	build/idt.o \
+	build/idt_flush.o \
 
 
 
