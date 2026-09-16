@@ -2,11 +2,13 @@
 #include "kernel/drivers/vga.h"
 #include "kernel/arch/x86/gdt.h"
 #include "kernel/boot_status.h"
+#include "kernel/arch/x86/idt.h"
 
 
 void boot_init() {
 const char* vga_description = "vga initialization";
 const char* gdt_description = "gdt initialization";
+const char* idt_description = "idt initialization";
 
 
     //initialize the vga driver.
@@ -30,6 +32,15 @@ const char* gdt_description = "gdt initialization";
         boot_status(BootStatus::OK, gdt_description);
     } else {
         boot_status(BootStatus::FAILED, gdt_description);
+        return;
+    }
+
+    idt_init();
+
+    if (idt_verify()) {
+        boot_status(BootStatus::OK, idt_description);
+    } else {
+        boot_status(BootStatus::FAILED, idt_description);
         return;
     }
 }
