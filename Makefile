@@ -17,6 +17,9 @@ build/boot.o: kernel/arch/x86/boot.s | build
 build/io.o: kernel/arch/x86/io.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/arch/x86/io.cpp -o build/io.o
 
+build/halt.o: kernel/arch/x86/halt.cpp | build
+	$(CXX) $(CXXFLAGS) -c kernel/arch/x86/halt.cpp -o build/halt.o
+
 #gdt
 build/gdt.o: kernel/arch/x86/gdt.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/arch/x86/gdt.cpp -o build/gdt.o
@@ -44,6 +47,9 @@ build/boot_init.o: kernel/boot_init.cpp | build
 build/boot_status.o: kernel/boot_status.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/boot_status.cpp -o build/boot_status.o
 
+build/kernel_panic.o: kernel/kernel_panic.cpp | build
+	$(CXX) $(CXXFLAGS) -c kernel/kernel_panic.cpp -o build/kernel_panic.o
+
 
 #drivers
 build/vga.o: kernel/drivers/vga.cpp | build
@@ -64,6 +70,8 @@ OBJS = \
 	build/interrupt_stub.o \
 	build/idt.o \
 	build/idt_flush.o \
+	build/halt.o \
+	build/kernel_panic.o \
 
 
 
