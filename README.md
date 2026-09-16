@@ -1,6 +1,6 @@
 patrix - kernel made in c++.
 
-version 0.10
+version 0.10.1
 
 ============
 
@@ -11,3 +11,5 @@ v0.10 - boot initialization<br>
 - added boot_status to display the result of system initialization<br>
 - added vga_verify to verify that the vga driver was initialized correctly at boot<br>
 - added gdt_verify to verify that the gdt was loaded correctly at boot
+
+v0.10.1 - small cleanup in boot_init
