@@ -43,4 +43,9 @@ const char* idt_description = "idt initialization";
         boot_status(BootStatus::FAILED, idt_description);
         return;
     }
+    //trigger a divide error for testing.
+    volatile int dividend = 1;
+    volatile int divisor = 0;
+
+    int result = dividend / divisor;
 }
