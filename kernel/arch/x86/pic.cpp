@@ -51,3 +51,16 @@ void pic_eoi(unsigned char irq) {
     //send an eoi to the master pic.
     outb(pic_master_command, 0x20);
 }
+
+
+//verify that the programmable interrupt controller was initialized correctly.
+bool pic_verify() {
+    //read the master pic interrupt mask.
+    unsigned char master_mask = inb(pic_master_data);
+    //read the slave pic interrupt mask.
+    unsigned char slave_mask = inb(pic_slave_data);
+
+    //verify that only irq1 is enabled on the master and all slave irqs are masked.
+    return master_mask == 0xFD
+        && slave_mask == 0xFF;
+}
