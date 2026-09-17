@@ -52,4 +52,6 @@ const char* pic_description = "pic initialization";
         boot_status(BootStatus::FAILED, pic_description);
         return;
     }
+
+    asm volatile ("sti");
 }
