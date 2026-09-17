@@ -47,8 +47,8 @@ build/boot_init.o: kernel/boot_init.cpp | build
 build/boot_status.o: kernel/boot_status.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/boot_status.cpp -o build/boot_status.o
 
-build/kernel_panic.o: kernel/kernel_panic.cpp | build
-	$(CXX) $(CXXFLAGS) -c kernel/kernel_panic.cpp -o build/kernel_panic.o
+build/panic.o: kernel/panic.cpp | build
+	$(CXX) $(CXXFLAGS) -c kernel/panic.cpp -o build/panic.o
 
 
 #drivers
@@ -71,7 +71,7 @@ OBJS = \
 	build/idt.o \
 	build/idt_flush.o \
 	build/halt.o \
-	build/kernel_panic.o \
+	build/panic.o \
 
 
 
