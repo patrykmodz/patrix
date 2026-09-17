@@ -19,4 +19,4 @@ v0.12 - programmable interrupt controller + keyboard driver<br>
 - "OK", "WARN", "FAIL" boot initialiser statuses are able to show green, yellow, and red for its corresponding status<br>
 - some code clean-up (somewhere, probably)<br>
 
-0.12.2 - fix failed boot status returning to kernel entry point<br>
+0.12.2 - bugfix: stop failed boot status returning to kernel entry point<br>
