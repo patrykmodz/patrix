@@ -1,17 +1,15 @@
 patrix - kernel made in c++.
 
-version 0.11.1
+version 0.12
 
 ============
 
 UPDATE LOG:
 
-v0.11 - interrupt descriptor table<br>
-- added interrupt descriptor table initialization and verification<br>
-- added interrupt stubs and common interrupt handling<br>
-- added divide error exception handling<br>
-- added kernel panic and cpu halt handling<br>
-- updated boot_init to check idt initialization<br>
-- removed temporary interrupt and exception tests
-
-0.11.1 - small code-cleanup
+v0.12 - programmable interrupt controller + keyboard driver<br>
+- added programmable interrupt controller initialization and verification<br>
+- added interrupt end-of-interrupt handling<br>
+- added basic keyboard driver and keyboard interrupt handling<br>
+- added keyboard scancode definitions<br>
+- enabled hardware interrupts after interrupt initialization<br>
+- added basic key handling and keyboard input testing<br>
