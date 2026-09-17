@@ -46,3 +46,6 @@ extern "C" void idt_flush(unsigned int pointer);
 
 //handle interrupts after the assembly stub has saved the processor state.
 extern "C" void interrupt_handler(InterruptFrame* frame);
+
+//handle interrupt vector 0.
+extern "C" void interrupt_stub_0();
