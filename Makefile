@@ -37,6 +37,12 @@ build/interrupt_stub.o: kernel/arch/x86/interrupt_stub.s | build
 build/idt_flush.o: kernel/arch/x86/idt_flush.s | build
 	$(CXX) -m32 -c kernel/arch/x86/idt_flush.s -o build/idt_flush.o
 
+#pic
+build/pic.o: kernel/arch/x86/pic.cpp | build
+	$(CXX) $(CXXFLAGS) -c kernel/arch/x86/pic.cpp -o build/pic.o
+
+
+
 # kernel
 build/kernel.o: kernel/main.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/main.cpp -o build/kernel.o
@@ -72,6 +78,7 @@ OBJS = \
 	build/idt_flush.o \
 	build/halt.o \
 	build/panic.o \
+	build/pic.o \
 
 
 
