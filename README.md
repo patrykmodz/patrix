@@ -1,6 +1,6 @@
 patrix - kernel made in c++.
 
-version 0.11
+version 0.11.1
 
 ============
 
@@ -13,3 +13,5 @@ v0.11 - interrupt descriptor table<br>
 - added kernel panic and cpu halt handling<br>
 - updated boot_init to check idt initialization<br>
 - removed temporary interrupt and exception tests
+
+0.11.1 - small code-cleanup
