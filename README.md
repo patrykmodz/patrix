@@ -1,6 +1,6 @@
 patrix - kernel made in c++.
 
-version 0.12
+version 0.12.1
 
 ============
 
@@ -13,3 +13,8 @@ v0.12 - programmable interrupt controller + keyboard driver<br>
 - added keyboard scancode definitions<br>
 - enabled hardware interrupts after interrupt initialization<br>
 - added basic key handling and keyboard input testing<br>
+
+0.12.1 - colour!
+- kernel panic is now blue and has a dedicated screen<br>
+- "OK", "WARN", "FAIL" boot initialiser statuses are able to show green, yellow, and red for its corresponding status<br>
+- some code clean-up (somewhere, probably)<br>
