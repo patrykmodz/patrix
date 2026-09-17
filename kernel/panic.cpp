@@ -4,10 +4,12 @@
 
 //halt the kernel after an unrecoverable error.
 [[noreturn]] void kernel_panic(const char* reason) {
-    //display the kernel panic message.
+    vga_hcurs();
+    vga_clear();
+    VGA_COLOUR = VGA_LIGHT_BLUE;
+
     vga_str("\nkernel panic: ");
-    //display the reason for the panic.
     vga_str(reason);
-    //halt the processor.
+
     kernel_halt();
 }
