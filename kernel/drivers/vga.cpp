@@ -36,7 +36,7 @@ void vga_scroll() {
     vga_y = 24;
 }
 
-void vga_write_char(char character) {
+void vga_char(char character) {
     //move to the beginning of the next line when a newline is received.
     if (character == '\n') {
         vga_x = 0;
@@ -70,11 +70,11 @@ void vga_write_char(char character) {
 }
 
 //write each character in the string to the screen.
-void vga_write_string(const char* string) {
+void vga_str(const char* string) {
     //continue until the null terminator is reached.
     while (*string != '\0') {
         //write the current character to the screen.
-        vga_write_char(*string);
+        vga_char(*string);
         //move to the next character in the string.
         string++;
     }
@@ -100,7 +100,7 @@ CURSOR
 */
 
 //update the hardware cursor to match the software cursor.
-void vga_update_cursor() {
+void vga_updatecurs() {
     //calculate the cursor position from its x and y coordinates.
     unsigned short position = vga_y * 80 + vga_x;
 
@@ -115,7 +115,7 @@ void vga_update_cursor() {
 }
 
 //hide the hardware cursor.
-void vga_hide_cursor() {
+void vga_hcurs() {
     //select the cursor start register.
     outb(0x3D4, 0x0A);
     //disable the cursor.
@@ -123,7 +123,7 @@ void vga_hide_cursor() {
 }
 
 //show the hardware cursor.
-void vga_show_cursor() {
+void vga_scurs() {
     //select the cursor start register.
     outb(0x3D4, 0x0A);
     //enable the cursor and set its starting scanline.
@@ -136,7 +136,6 @@ void vga_show_cursor() {
 
 //verify that vga text memory can be accessed.
 bool vga_verify() {
-
     //store the original value of the first screen cell.
     unsigned short original = vga_memory[0];
 
