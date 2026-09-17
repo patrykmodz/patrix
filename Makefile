@@ -61,6 +61,10 @@ build/panic.o: kernel/panic.cpp | build
 build/vga.o: kernel/drivers/vga.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/drivers/vga.cpp -o build/vga.o
 
+build/keyboard.o: kernel/drivers/keyboard.cpp | build
+	$(CXX) $(CXXFLAGS) -c kernel/drivers/keyboard.cpp -o build/keyboard.o
+
+
 
 
 # kernel binary
@@ -79,6 +83,7 @@ OBJS = \
 	build/halt.o \
 	build/panic.o \
 	build/pic.o \
+	build/keyboard.o \
 
 
 
