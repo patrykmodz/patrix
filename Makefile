@@ -65,8 +65,6 @@ build/keyboard.o: kernel/drivers/keyboard.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/drivers/keyboard.cpp -o build/keyboard.o
 
 
-
-
 # kernel binary
 OBJS = \
 	build/boot.o \
