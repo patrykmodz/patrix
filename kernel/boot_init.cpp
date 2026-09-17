@@ -5,6 +5,7 @@
 #include "kernel/arch/x86/idt.h"
 #include "kernel/arch/x86/halt.h"
 #include "kernel/arch/x86/pic.h"
+#include "kernel/panic.h"
 
 
 void boot_init() {
@@ -20,7 +21,8 @@ const char* pic_description = "pic initialization";
         boot_status(BootStatus::OK, vga_description);
     } else {
         boot_status(BootStatus::FAILED, vga_description);
-        return;
+        //if we have nothing to display a panic with, just halt.
+        kernel_halt();
     }
 
     //initialize the global descriptor table.
@@ -30,7 +32,7 @@ const char* pic_description = "pic initialization";
         boot_status(BootStatus::OK, gdt_description);
     } else {
         boot_status(BootStatus::FAILED, gdt_description);
-        return;
+        kernel_panic("gdt initialization failed");
     }
 
     //initialize the interrupt descriptor table
@@ -40,7 +42,7 @@ const char* pic_description = "pic initialization";
         boot_status(BootStatus::OK, idt_description);
     } else {
         boot_status(BootStatus::FAILED, idt_description);
-        return;
+        kernel_panic("idt initialization failed");
     }
 
     //initialize the pic
@@ -50,7 +52,7 @@ const char* pic_description = "pic initialization";
         boot_status(BootStatus::OK, pic_description);
     } else {
         boot_status(BootStatus::FAILED, pic_description);
-        return;
+        kernel_panic("pic initialization failed");
     }
 
     asm volatile ("sti");
