@@ -1,5 +1,5 @@
-#include "kernel/drivers/vga.h"
 #include "kernel/arch/x86/io.h"
+
 
 //pointer to the beginning of vga text memory.
 volatile unsigned short* vga_memory;
@@ -18,6 +18,7 @@ void vga_init() {
     vga_y = 0;
 }
 
+
 //move all screen lines up by one line.
 void vga_scroll() {
     //copy every row into the row above it.
@@ -35,6 +36,7 @@ void vga_scroll() {
     //keep the cursor on the bottom row.
     vga_y = 24;
 }
+
 
 void vga_char(char character) {
     //move to the beginning of the next line when a newline is received.
@@ -69,7 +71,7 @@ void vga_char(char character) {
     }
 }
 
-//write each character in the string to the screen.
+
 void vga_str(const char* string) {
     //continue until the null terminator is reached.
     while (*string != '\0') {
@@ -80,7 +82,7 @@ void vga_str(const char* string) {
     }
 }
 
-//clear the entire screen.
+
 void vga_clear() {
 
     //go through every character cell on the screen.
@@ -95,11 +97,11 @@ void vga_clear() {
     vga_y = 0;
 }
 
+
 /*
 CURSOR
 */
 
-//update the hardware cursor to match the software cursor.
 void vga_updatecurs() {
     //calculate the cursor position from its x and y coordinates.
     unsigned short position = vga_y * 80 + vga_x;
@@ -114,7 +116,6 @@ void vga_updatecurs() {
     outb(0x3D5, position & 0xFF);
 }
 
-//hide the hardware cursor.
 void vga_hcurs() {
     //select the cursor start register.
     outb(0x3D4, 0x0A);
@@ -122,7 +123,6 @@ void vga_hcurs() {
     outb(0x3D5, 0x20);
 }
 
-//show the hardware cursor.
 void vga_scurs() {
     //select the cursor start register.
     outb(0x3D4, 0x0A);
@@ -133,6 +133,7 @@ void vga_scurs() {
     //set the ending scanline.
     outb(0x3D5, 0x0F);
 }
+
 
 //verify that vga text memory can be accessed.
 bool vga_verify() {
