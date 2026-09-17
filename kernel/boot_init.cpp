@@ -14,10 +14,7 @@ const char* idt_description = "idt initialization";
 
     //initialize the vga driver.
     vga_init();
-    //hide the hardware cursor during boot.
-    vga_hcurs();
 
-    //verify that vga text memory is accessible.
     if (vga_verify()) {
         boot_status(BootStatus::OK, vga_description);
     } else {
@@ -28,7 +25,6 @@ const char* idt_description = "idt initialization";
     //initialize the global descriptor table.
     gdt_init();
 
-    //verify that the gdt was loaded correctly.
     if (gdt_verify()) {
         boot_status(BootStatus::OK, gdt_description);
     } else {
@@ -36,6 +32,7 @@ const char* idt_description = "idt initialization";
         return;
     }
 
+    //initialize the interrupt descriptor table
     idt_init();
 
     if (idt_verify()) {
@@ -44,5 +41,4 @@ const char* idt_description = "idt initialization";
         boot_status(BootStatus::FAILED, idt_description);
         return;
     }
-    int e = 1/0;
 }
