@@ -47,5 +47,17 @@ extern "C" void idt_flush(unsigned int pointer);
 //handle interrupts after the assembly stub has saved the processor state.
 extern "C" void interrupt_handler(InterruptFrame* frame);
 
+//signal that a hardware interrupt has been handled.
+void pic_eoi(unsigned char irq);
+
+/*
+INTERRUPT VECTORS
+*/
+
+void idt_set_entries();
+
+
 //handle interrupt vector 0.
 extern "C" void interrupt_stub_0();
+//handle keyboard interrupt vector 0x21.
+extern "C" void interrupt_stub_33();
