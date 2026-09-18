@@ -64,6 +64,10 @@ build/vga.o: kernel/drivers/vga.cpp | build
 build/keyboard.o: kernel/drivers/keyboard/keyboard.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/drivers/keyboard/keyboard.cpp -o build/keyboard.o
 
+build/uk_keymap.o: kernel/drivers/keyboard/keymap/uk_keymap.cpp | build
+	$(CXX) $(CXXFLAGS) -c kernel/drivers/keyboard/keymap/uk_keymap.cpp -o build/uk_keymap.o
+
+
 
 # kernel binary
 OBJS = \
@@ -82,7 +86,7 @@ OBJS = \
 	build/panic.o \
 	build/pic.o \
 	build/keyboard.o \
-
+	build/uk_keymap.o \
 
 
 build/patrix.bin: $(OBJS)
