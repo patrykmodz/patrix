@@ -1,6 +1,6 @@
 patrix - kernel made in c++.
 
-version 0.12.2
+version 0.12.3
 
 ============
 
@@ -20,3 +20,5 @@ v0.12 - programmable interrupt controller + keyboard driver<br>
 - some code clean-up (somewhere, probably)<br>
 
 0.12.2 - bugfix: stop failed boot status returning to kernel entry point<br>
+
+0.12.3 - reorganise project files<br>
