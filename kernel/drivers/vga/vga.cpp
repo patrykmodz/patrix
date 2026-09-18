@@ -120,6 +120,20 @@ void vga_updatecurs() {
     outb(0x3D5, position & 0xFF);
 }
 
+void vga_setcurs(int posx, int posy) {
+    //calculate the cursor position from its x and y coordinates.
+    unsigned short position = posy * 80 + posx;
+
+    //select the cursor position high byte register.
+    outb(0x3D4, 0x0E);
+    //write the high byte of the cursor position.
+    outb(0x3D5, (position >> 8) & 0xFF);
+    //select the cursor position low byte register.
+    outb(0x3D4, 0x0F);
+    //write the low byte of the cursor position.
+    outb(0x3D5, position & 0xFF);
+}
+
 void vga_hcurs() {
     //select the cursor start register.
     outb(0x3D4, 0x0A);
