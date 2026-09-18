@@ -1,6 +1,6 @@
 #include "arch/x86/io.h"
 #include "arch/x86/pic.h"
-#include "drivers/vga.h"
+#include "drivers/vga/vga.h"
 
 
 //KEYMAPS

@@ -1,5 +1,5 @@
 #include "core/boot_init.h"
-#include "drivers/vga.h"
+#include "drivers/vga/vga.h"
 #include "arch/x86/gdt.h"
 #include "core/boot_status.h"
 #include "arch/x86/idt.h"

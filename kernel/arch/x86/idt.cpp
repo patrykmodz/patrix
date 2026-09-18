@@ -1,5 +1,5 @@
 #include "arch/x86/idt.h"
-#include "drivers/vga.h"
+#include "drivers/vga/vga.h"
 #include "core/panic.h"
 #include "arch/x86/pic.h"
 #include "drivers/keyboard/keyboard.h"

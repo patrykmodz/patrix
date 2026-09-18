@@ -1,5 +1,5 @@
 #include "arch/x86/io.h"
-#include "drivers/vga.h"
+#include "drivers/vga/vga.h"
 
 
 //pointer to the beginning of vga text memory.
