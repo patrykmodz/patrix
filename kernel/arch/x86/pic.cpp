@@ -1,5 +1,5 @@
-#include "kernel/arch/x86/pic.h"
-#include "kernel/arch/x86/io.h"
+#include "arch/x86/pic.h"
+#include "arch/x86/io.h"
 
 
 //master pic command port.
