@@ -1,5 +1,5 @@
-#include "kernel/boot_status.h"
-#include "kernel/drivers/vga.h"
+#include "core/boot_status.h"
+#include "drivers/vga.h"
 
 
 void boot_status(BootStatus status, const char* name) {
