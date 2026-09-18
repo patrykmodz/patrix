@@ -14,8 +14,16 @@ void vga_scroll();
 //clear the entire screen.
 void vga_clear();
 
+//current horizontal cursor position.
+extern int vga_x;
+//current vertical cursor position.
+extern int vga_y;
+
+extern volatile unsigned short* vga_memory;
+
 //hardware-cursor
 void vga_updatecurs();
+void vga_setcurs(int posx, int posy);
 void vga_hcurs();
 void vga_scurs();
 
