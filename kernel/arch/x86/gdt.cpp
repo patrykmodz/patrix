@@ -1,4 +1,4 @@
-#include "kernel/arch/x86/gdt.h"
+#include "arch/x86/gdt.h"
 
 //store the global descriptor table entries.
 GDTEntry gdt[3];
