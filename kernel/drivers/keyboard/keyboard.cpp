@@ -1,6 +1,7 @@
 #include "arch/x86/io.h"
 #include "arch/x86/pic.h"
 #include "drivers/vga/vga.h"
+#include "drivers/vga/vgacon.h"
 
 
 //KEYMAPS
@@ -17,8 +18,8 @@ void handle_key(unsigned short scancode) {
         if (ukmap[i].scancode == scancode) {
             if (ukmap[i].type == key_type::CHARACTER &&
                 ukmap[i].modifier == key_modifier::BASE) {
-                
-                vga_char(ukmap[i].output);
+
+                vgacon_char(ukmap[i].output);
             }
         }
     }
