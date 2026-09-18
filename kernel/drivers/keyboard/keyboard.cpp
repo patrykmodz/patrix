@@ -1,10 +1,13 @@
-#include "kernel/arch/x86/io.h"
-#include "kernel/arch/x86/pic.h"
-#include "kernel/drivers/vga.h"
-#include "kernel/drivers/scancodes.h"
+#include "arch/x86/io.h"
+#include "arch/x86/pic.h"
+#include "drivers/vga.h"
+
 
 //KEYMAPS
-#include "kernel/drivers/keymap.h"
+#include "drivers/keyboard/scancodes.h"
+
+#include "drivers/keyboard/keymap/keymap.h"
+#include "drivers/keyboard/keymap/uk_keymap.h"
 
 
 unsigned short read_scancode() {
