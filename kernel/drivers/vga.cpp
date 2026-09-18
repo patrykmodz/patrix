@@ -1,5 +1,6 @@
-#include "kernel/arch/x86/io.h"
-#include "kernel/drivers/vga.h"
+#include "arch/x86/io.h"
+#include "drivers/vga.h"
+
 
 //pointer to the beginning of vga text memory.
 volatile unsigned short* vga_memory;
