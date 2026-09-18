@@ -1,6 +1,6 @@
 CXX = g++
 
-CXXFLAGS = -m32 -ffreestanding -fno-exceptions -fno-rtti -fno-pie -I.
+CXXFLAGS = -m32 -ffreestanding -fno-exceptions -fno-rtti -fno-pie -I kernel
 
 all: build/patrix.bin iso
 
@@ -47,22 +47,22 @@ build/pic.o: kernel/arch/x86/pic.cpp | build
 build/kernel.o: kernel/main.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/main.cpp -o build/kernel.o
 
-build/boot_init.o: kernel/boot_init.cpp | build
-	$(CXX) $(CXXFLAGS) -c kernel/boot_init.cpp -o build/boot_init.o
+build/boot_init.o: kernel/core/boot_init.cpp | build
+	$(CXX) $(CXXFLAGS) -c kernel/core/boot_init.cpp -o build/boot_init.o
 
-build/boot_status.o: kernel/boot_status.cpp | build
-	$(CXX) $(CXXFLAGS) -c kernel/boot_status.cpp -o build/boot_status.o
+build/boot_status.o: kernel/core/boot_status.cpp | build
+	$(CXX) $(CXXFLAGS) -c kernel/core/boot_status.cpp -o build/boot_status.o
 
-build/panic.o: kernel/panic.cpp | build
-	$(CXX) $(CXXFLAGS) -c kernel/panic.cpp -o build/panic.o
+build/panic.o: kernel/core/panic.cpp | build
+	$(CXX) $(CXXFLAGS) -c kernel/core/panic.cpp -o build/panic.o
 
 
 #drivers
 build/vga.o: kernel/drivers/vga.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/drivers/vga.cpp -o build/vga.o
 
-build/keyboard.o: kernel/drivers/keyboard.cpp | build
-	$(CXX) $(CXXFLAGS) -c kernel/drivers/keyboard.cpp -o build/keyboard.o
+build/keyboard.o: kernel/drivers/keyboard/keyboard.cpp | build
+	$(CXX) $(CXXFLAGS) -c kernel/drivers/keyboard/keyboard.cpp -o build/keyboard.o
 
 
 # kernel binary
