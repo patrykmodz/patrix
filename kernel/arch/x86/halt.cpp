@@ -1,4 +1,4 @@
-#include "kernel/arch/x86/halt.h"
+#include "arch/x86/halt.h"
 
 //halt the cpu indefinitely.
 [[noreturn]] void kernel_halt() {
