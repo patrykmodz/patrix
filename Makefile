@@ -58,8 +58,12 @@ build/panic.o: kernel/core/panic.cpp | build
 
 
 #drivers
-build/vga.o: kernel/drivers/vga.cpp | build
-	$(CXX) $(CXXFLAGS) -c kernel/drivers/vga.cpp -o build/vga.o
+build/vga.o: kernel/drivers/vga/vga.cpp | build
+	$(CXX) $(CXXFLAGS) -c kernel/drivers/vga/vga.cpp -o build/vga.o
+
+build/vgacon.o: kernel/drivers/vga/vgacon.cpp | build
+	$(CXX) $(CXXFLAGS) -c kernel/drivers/vga/vgacon.cpp -o build/vgacon.o
+
 
 build/keyboard.o: kernel/drivers/keyboard/keyboard.cpp | build
 	$(CXX) $(CXXFLAGS) -c kernel/drivers/keyboard/keyboard.cpp -o build/keyboard.o
@@ -75,6 +79,7 @@ OBJS = \
 	build/kernel.o \
 	build/boot_init.o \
 	build/vga.o \
+	build/vgacon.o \
 	build/io.o \
 	build/gdt.o \
 	build/gdt_flush.o \
