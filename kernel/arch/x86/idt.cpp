@@ -1,8 +1,8 @@
-#include "kernel/arch/x86/idt.h"
-#include "kernel/drivers/vga.h"
-#include "kernel/panic.h"
-#include "kernel/arch/x86/pic.h"
-#include "kernel/drivers/keyboard.h"
+#include "arch/x86/idt.h"
+#include "drivers/vga.h"
+#include "core/panic.h"
+#include "arch/x86/pic.h"
+#include "drivers/keyboard/keyboard.h"
 
 
 //store the interrupt descriptor table entries.
