@@ -1,4 +1,4 @@
-#include "kernel/arch/x86/io.h"
+#include "arch/x86/io.h"
 
 //write an 8-bit value to an x86 I/O port.
 void outb(unsigned short port, unsigned char value) {
