@@ -1,11 +1,11 @@
-#include "kernel/boot_init.h"
-#include "kernel/drivers/vga.h"
-#include "kernel/arch/x86/gdt.h"
-#include "kernel/boot_status.h"
-#include "kernel/arch/x86/idt.h"
-#include "kernel/arch/x86/halt.h"
-#include "kernel/arch/x86/pic.h"
-#include "kernel/panic.h"
+#include "core/boot_init.h"
+#include "drivers/vga.h"
+#include "arch/x86/gdt.h"
+#include "core/boot_status.h"
+#include "arch/x86/idt.h"
+#include "arch/x86/halt.h"
+#include "arch/x86/pic.h"
+#include "core/panic.h"
 
 
 void boot_init() {
