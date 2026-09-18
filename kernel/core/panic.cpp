@@ -1,5 +1,5 @@
 #include "core/panic.h"
-#include "drivers/vga.h"
+#include "drivers/vga/vga.h"
 #include "arch/x86/halt.h"
 
 //halt the kernel after an unrecoverable error.
