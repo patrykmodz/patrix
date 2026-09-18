@@ -4,10 +4,7 @@
 
 
 //KEYMAPS
-#include "drivers/keyboard/scancodes.h"
-
-#include "drivers/keyboard/keymap/keymap.h"
-#include "drivers/keyboard/keymap/uk_keymap.h"
+#include "drivers/keyboard/keymap/keymaps.h"
 
 
 unsigned short read_scancode() {
@@ -15,18 +12,17 @@ unsigned short read_scancode() {
     return result;
 }
 
-
 void handle_key(unsigned short scancode) {
-    if(scancode == KEY_A) {
-        vga_char('a');
-        vga_updatecurs();
-    }
-    if(scancode == KEY_F1) {
-        vga_clear();
-        vga_updatecurs();
+    for (int i = 0; i < sizeof(ukmap) / sizeof(ukmap[0]); i++) {
+        if (ukmap[i].scancode == scancode) {
+            if (ukmap[i].type == key_type::CHARACTER &&
+                ukmap[i].modifier == key_modifier::BASE) {
+                
+                vga_char(ukmap[i].output);
+            }
+        }
     }
 }
-
 
 void keyboard_interrupt() {
     unsigned short scancode = read_scancode();
