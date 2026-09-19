@@ -50,7 +50,7 @@ const char* vgacon_description = "vgacon initialization";
     //initialize the pic
     pic_init();
 
-    if(idt_verify()) {
+    if(pic_verify()) {
         boot_status(BootStatus::OK, pic_description);
     } else {
         boot_status(BootStatus::FAILED, pic_description);
@@ -65,6 +65,8 @@ const char* vgacon_description = "vgacon initialization";
         boot_status(BootStatus::FAILED, vgacon_description);
         kernel_panic("vgacon initialization failed");
     }
+
+    //vgacon_clear();
 
     asm volatile ("sti");
 }
