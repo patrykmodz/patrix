@@ -37,6 +37,9 @@ void pic_init() {
 
     //keyboard interrupt.
     outb(pic_master_data, 0xFD);
+
+    //mask all slave pic interrupts
+    outb(pic_slave_data, 0xFF);
 }
 
 
