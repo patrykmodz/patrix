@@ -1,5 +1,6 @@
 #include "arch/x86/io.h"
 #include "drivers/vga/vga.h"
+#include "drivers/vga/vgacon.h"
 
 
 //pointer to the beginning of vga text memory.
@@ -43,36 +44,11 @@ void vga_scroll() {
 
 
 void vga_char(char character) {
-    //move to the beginning of the next line when a newline is received.
-    if (character == '\n') {
-        vga_x = 0;
-        vga_y++;
-
-        //scroll the screen when the cursor moves below the last row.
-        if (vga_y >= 25) {
-            vga_scroll();
-        }
-
-        return;
-    }
-
     //convert the two-dimensional cursor position into a one-dimensional array index.
     int index = vga_y * 80 + vga_x;
     //combine the text colour and character into one 16-bit vga entry.
     vga_memory[index] = ((unsigned short)VGA_COLOUR << 8) | character;
-    //move the cursor one character to the right.
     vga_x++;
-
-    //move to the beginning of the next line when the cursor reaches the right edge.
-    if (vga_x >= 80) {
-        vga_x = 0;
-        vga_y++;
-    }
-
-    //scroll the screen when the cursor moves below the last row.
-    if (vga_y >= 25) {
-        vga_scroll();
-    }
 }
 
 
