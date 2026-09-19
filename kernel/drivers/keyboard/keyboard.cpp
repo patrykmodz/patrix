@@ -23,6 +23,9 @@ void handle_key(unsigned short scancode) {
             }
         }
     }
+    if(scancode == 0x0E) {
+        vgacon_bck();
+    }
 }
 
 void keyboard_interrupt() {
